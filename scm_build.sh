@@ -18,7 +18,7 @@ mkdir $OUTPUT
 mkdir $RESOURCE
 
 #--- 前端构建
-npm install --production
+npm install
 npm run build
 
 #--- 移动文件
