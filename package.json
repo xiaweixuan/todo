@@ -1,0 +1,24 @@
+{
+  "name": "todo",
+  "version": "1.0.0",
+  "description": "todo list",
+  "scripts": {
+    "start": "vite",
+    "build": "vite build",
+    "serve": "vite preview",
+    "check": "flow check"
+  },
+  "author": "xiaweixuan",
+  "license": "ISC",
+  "devDependencies": {
+    "@bunchtogether/vite-plugin-flow": "^1.0.1",
+    "@rollup/plugin-sucrase": "^4.0.1",
+    "autoprefixer": "^10.4.0",
+    "flow-bin": "^0.165.0",
+    "tailwindcss": "^2.2.19",
+    "vite": "^2.6.14"
+  },
+  "dependencies": {
+    "fre": "^2.4.3"
+  }
+}
