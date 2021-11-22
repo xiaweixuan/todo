@@ -37,14 +37,14 @@ function TreeItem({ cell, onClick, isCollapsed, setIsCollapsed, editabled, onCre
       >
         {cell.finished ? <Todo /> : <Finish />}
       </div>
-      <div
+      {/* <div
         onClick={onCreate}
         class="inline-block w-4 h-3 cursor-pointer transform duration-300 opacity-0 group-hover:opacity-100 group-hover:translate-x-5"
       >
         <Add />
-      </div>
+      </div> */}
       <div
-        onClick={() => onClick({ action: 2, id: cell.id })}
+        onClick={() => onClick && onClick({ action: 2, id: cell.id })}
         class="inline-block w-4 h-3 cursor-pointer transform duration-300 opacity-0 group-hover:opacity-100 group-hover:translate-x-6"
       >
         <Remove />
@@ -72,7 +72,7 @@ function TreeList({ tree, onClick }) {
     onClick(val)
   }
 
-  const onCreate = async (content) => {
+  const handleCreate = async (content) => {
     if (content) {
       await onClick({ action: 1, parentId: tree.id, dto: { content } })
     }
@@ -92,7 +92,7 @@ function TreeList({ tree, onClick }) {
       style={`padding-left: 35px;height:${isCollapsed ? 0 : 'auto'}`}
     >
       {tree.children && tree.children.map(item => <TreeList tree={item} onClick={onClick} />)}
-      {visible && <CreateTreeItem onOk={onCreate} />}
+      {/* {visible && <CreateTreeItem onOk={handleCreate} />} */}
     </section>
   </>
 }
