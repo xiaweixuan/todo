@@ -1,4 +1,5 @@
 import { h, useState, useEffect } from 'fre'
+import { createMacroTask } from '../../utils/utils'
 import ContentCard from '../../Component/ContentCard'
 import TreeList from '../../Component/TreeList'
 import useStore from './Store'
@@ -12,13 +13,13 @@ function Home() {
   const handleClick = async ({ action, id, dto, parentId }) => {
     switch (action) {
       case 1:
-        await onAdd(parentId, dto)
+        createMacroTask(() => onAdd(parentId, dto))()
         break
       case 2:
-        await onRemove(id)
+        createMacroTask(() => onRemove(id))()
         break
       case 3:
-        await onUpdate(id, dto)
+        createMacroTask(() => onUpdate(id, dto))()
         break
     }
   }

@@ -52,7 +52,7 @@ function Input({ defaultValue, onFocus, onKeyup, ...rest }) {
     onFocus={handleFocus}
     onKeyup={handleKeyup}
     defaultValue={defaultValue}
-    class="w-full outline-none bg-gray-100 rounded-lg p-2"
+    class="text-xs w-full outline-none bg-gray-100 rounded-lg p-1"
   />
 }
 

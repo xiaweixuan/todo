@@ -1,9 +1,8 @@
 import request from '../../utils/request'
-import { sleep, getTodos, setTodos } from '../../utils/utils'
+import { getTodos, setTodos } from '../../utils/utils'
 
-export async function queryTodos() {
+export async function queryTodos() { 
   try {
-    await sleep()
     const todos = getTodos()
     if (todos) return todos
   } catch (error) {
@@ -13,7 +12,6 @@ export async function queryTodos() {
 
 export async function createTodo(parentId, dto) {
   try {
-    await sleep()
     const { byId, allIds } = getTodos()
     const id = (new Date()).getTime()
     byId[id] = { id, finished: false, content: dto.content }
@@ -27,7 +25,6 @@ export async function createTodo(parentId, dto) {
 
 export async function updateTodo(id, dto) {
   try {
-    await sleep()
     const { byId, allIds } = getTodos()
     const curNode = byId[id]
     if (!curNode) return
@@ -42,7 +39,6 @@ export async function updateTodo(id, dto) {
 
 export async function deleteTodo(id) {
   try {
-    await sleep()
     const { byId, allIds } = getTodos()
     function find(list, delId) {
       const delList = []

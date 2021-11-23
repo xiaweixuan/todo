@@ -28,3 +28,13 @@ export function setTodos(todos) {
     throw Error('存储todos失败')
   }
 }
+
+export function createMacroTask(callback) {
+  if (typeof MessageChannel !== 'undefined') {
+    const { port1, port2 } = new MessageChannel();
+    port1.onmessage = callback
+    return () => port2.postMessage(null)
+  } else {
+    return () => setTimeout(callback)
+  }
+}
