@@ -1,6 +1,9 @@
 import { h, useRef, useEffect } from 'fre'
 
 const DEFAULT_WIDTH = '170'
+const EN_LENGTH = 7.5
+const O_LENGTH = 14
+const EXTRA_WIDTH = 8
 
 function getTextWidth(text) {
   if (typeof text !== 'string') return DEFAULT_WIDTH
@@ -8,7 +11,7 @@ function getTextWidth(text) {
   text.split("").forEach(str => {
     str.charCodeAt() < 128 ? enNum++ : oNum++
   })
-  return enNum * 10 + oNum * 16
+  return enNum * EN_LENGTH + oNum * O_LENGTH
 }
 
 function getInputWidth(el) {
@@ -20,7 +23,7 @@ function adjustInput(el) {
   const textWidth = getTextWidth(el.value)
   const iptWidth = getInputWidth(el)
   if (textWidth > DEFAULT_WIDTH) {
-    el.style.width = `${textWidth + 15}px`
+    el.style.width = `${textWidth + EXTRA_WIDTH}px`
   } else if(textWidth < DEFAULT_WIDTH && iptWidth > DEFAULT_WIDTH) {
     el.style.width = `${DEFAULT_WIDTH}px`
   }
@@ -52,7 +55,7 @@ function Input({ defaultValue, onFocus, onKeyup, ...rest }) {
     onFocus={handleFocus}
     onKeyup={handleKeyup}
     defaultValue={defaultValue}
-    class="text-xs w-full outline-none bg-gray-100 rounded-lg p-1"
+    class="text-xs w-full outline-none bg-gray-100 rounded-lg py-1 px-2"
   />
 }
 

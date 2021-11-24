@@ -1,7 +1,7 @@
 import { h } from 'fre'
 import Input from '../Input'
 
-function CreateTreeItem({ onOk, isCreate }) {
+function CreateTreeItem({ onOk, onCancel }) {
   const handleKey = (e) => {
     if (e.keyCode !== 13) return
     onOk(e.target.value)
@@ -13,7 +13,7 @@ function CreateTreeItem({ onOk, isCreate }) {
         <div class="relative flex items-center">
           <div class="absolute left-2 rounded-full w-2 h-2 bg-blue-500"></div>
           <div class="py-3 px-6">
-            <Input onKeyPress={handleKey} />
+            <Input onKeyPress={handleKey} onBlur={onCancel} />
           </div>
         </div>
       </div>

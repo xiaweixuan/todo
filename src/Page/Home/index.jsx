@@ -39,7 +39,7 @@ function Home() {
       Add
     </div>
     {todoTree && todoTree.map(item => <TreeList tree={item} onClick={handleClick} />)}
-    {visible && <CreateTreeItem onOk={onCreate} />}
+    {visible && <CreateTreeItem onOk={onCreate} onCancel={() => setVisible(false)} />}
   </ContentCard>
 }
 

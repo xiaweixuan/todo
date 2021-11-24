@@ -18,7 +18,7 @@ function TreeItem({ cell, onClick, isCollapsed, setIsCollapsed, editabled, onCre
   const handleBlur = (e) => {
     !setEditable(false)
   }
-  
+
   return <section class="my-1">
     <div class="relative group">
       <div class="inline-block min-w-300 cursor-pointer group-hover:shadow">
@@ -93,7 +93,7 @@ function TreeList({ tree, onClick }) {
       style={`padding-left: 35px;height:${isCollapsed ? 0 : 'auto'}`}
     >
       {tree.children && tree.children.map(item => <TreeList tree={item} onClick={onClick} />)}
-      {visible && <CreateTreeItem onOk={handleCreate} />}
+      {visible && <CreateTreeItem onOk={handleCreate} onCancel={() => setVisible(false)} />}
     </section>
   </>
 }
