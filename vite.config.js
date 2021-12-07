@@ -1,7 +1,7 @@
 import { flowPlugin, esbuildFlowPlugin } from '@bunchtogether/vite-plugin-flow';
 
 export default {
-  base: '/todo/',
+  base: '',
   port: '8000',
   esbuild: {
     jsxFactory: 'h',
