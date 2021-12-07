@@ -1,5 +1,4 @@
 import { h, useState, useEffect } from 'fre'
-import { createMacroTask } from '../../utils/utils'
 import ContentCard from '../../Component/ContentCard'
 import TreeList from '../../Component/TreeList'
 import useStore from './Store'
@@ -10,24 +9,22 @@ function Home() {
   const { todoTree, onUpdate, onAdd, onRemove } = useStore()
   const [visible, setVisible] = useState(false)
 
-  const handleClick = async ({ action, id, dto, parentId }) => {
+  const handleClick = ({ action, id, dto, parentId }) => {
     switch (action) {
       case 1:
-        createMacroTask(() => onAdd(parentId, dto))()
+        onAdd(parentId, dto)
         break
       case 2:
-        createMacroTask(() => onRemove(id))()
+        onRemove(id)
         break
       case 3:
-        createMacroTask(() => onUpdate(id, dto))()
+        onUpdate(id, dto)
         break
     }
   }
 
-  const onCreate = async (content) => {
-    if (content) {
-      await onAdd(-1, { content })
-    }
+  const onCreate = (content) => {
+    onAdd(-1, { content })
     setVisible(false)
   }
 

@@ -12,7 +12,7 @@ export function getTodos() {
     if (todos) {
       return JSON.parse(todos)
     } else {
-      const inital = { byId: {}, allIds: [] }
+      const inital = []
       setTodos(inital)
       return inital
     }

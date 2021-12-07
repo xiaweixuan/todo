@@ -8,12 +8,12 @@ function TreeItem({ cell, onClick, isCollapsed, setIsCollapsed, editabled, onCre
 
   const handleKey = (e) => {
     if (e.keyCode !== 13) return
+    setEditable(false)
     onClick(
       e.target.value ?
         { action: 3, id: cell.id, dto: { ...cell, content: e.target.value } } :
         { action: 2, id: cell.id }
     )
-    setEditable(false)
   }
   const handleBlur = (e) => {
     !setEditable(false)
@@ -73,11 +73,11 @@ function TreeList({ tree, onClick }) {
     onClick(val)
   }
 
-  const handleCreate = async (content) => {
-    if (content) {
-      await onClick({ action: 1, parentId: tree.id, dto: { content } })
-    }
+  const handleCreate = (content) => {
     setVisible(false)
+    if (content) {
+      onClick({ action: 1, parentId: tree.id, dto: { content } })
+    }
   }
 
   return <>
